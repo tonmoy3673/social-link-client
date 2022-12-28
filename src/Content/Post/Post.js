@@ -14,7 +14,7 @@ const Post = ({data}) => {
             <img src={Comment} alt="postImage" />
             <img src={Share} alt="postImage" />
             </div>
-            <span>{data.likes} Likes</span>
+            <span style={{color:"var(--gray)",fontSize:'12px'}}>{data.likes} Likes</span>
             <div className='detail'>
                 <span><strong>{data.name}</strong></span>
                 <span> {data.desc} <button className='button ps-button'>Details</button></span>

@@ -9,13 +9,13 @@ const ProfileCard = () => {
     return (
         <div className="ProfileCard">
       <div className="ProfileImages">
-        <img src={Cover} alt="" />
-        <img src={Profile} alt="" />
+        <img src={Cover} alt="Cover" />
+        <img src={Profile} alt="Profile" />
       </div>
 
       <div className="ProfileName">
-        <span>Zendaya MJ</span>
-        <span>Senior UI/UX Designer</span>
+        <span>Mehedi Hasan Tonmoy</span>
+        <span>Font-end Developer</span>
       </div>
 
       <div className="followStatus">

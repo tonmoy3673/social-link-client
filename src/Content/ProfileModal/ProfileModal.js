@@ -64,6 +64,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
           <input
             type="text"
             className="infoInput"
+            name="university"
             placeholder="University Name"
           />
         </div>

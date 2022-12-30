@@ -4,7 +4,10 @@
     gap: 2rem;
 }
 
-
+.pro{
+    text-decoration: none;
+    
+}
 .navIcons{
     margin-top: 1rem;
     margin-right: 30px;

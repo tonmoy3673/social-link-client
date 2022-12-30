@@ -5,6 +5,7 @@ import Noti from "../../img/noti.png";
 import Comment from "../../img/comment.png";
 import { UilSetting } from "@iconscout/react-unicons";
 import Auth from '../Auth/Auth';
+import { Link } from 'react-router-dom';
 const RightSide = () => {
     return (
         <div className='RightSide'>
@@ -13,6 +14,7 @@ const RightSide = () => {
         <UilSetting />
         <img src={Noti} alt="" />
         <img src={Comment} alt="" />
+        <Link to='/profile' className='pro'>Profile</Link>
       </div>
       <Auth/>
         </div>

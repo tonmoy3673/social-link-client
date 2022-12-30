@@ -9,7 +9,7 @@ const Auth = () => {
   const initialState = {
     firstName: "",
     lastName: "",
-    email: "",
+    username: "",
     password: "",
     confirmpass: "",
   };
@@ -83,10 +83,10 @@ const Auth = () => {
           <div>
             <input
               required
-              type="email"
+              type="text"
               placeholder="Email Address"
               className="infoInput"
-              name="email"
+              name="username"
               value={data.email}
               onChange={handleChange}
              />

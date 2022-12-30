@@ -6,26 +6,51 @@ import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
+import { useDispatch, useSelector } from 'react-redux';
+import { uploadImage } from '../actions/uploadAction';
+
 
 const PostShare = () => {
 
     const [image,setImage]=useState(null)
     const imageRef=useRef()
-
+    const dispatch=useDispatch()
+    const desc= useRef()
+    const {user} =useSelector((state)=>state.authReducer.authData)
     const onImageChange=event=>{
         if(event.target.files && event.target.files[0]){
             let img=event.target.files[0];
-            setImage({
-                image:URL.createObjectURL(img),
-            })
+            setImage((img),
+            )
         }
     }
 
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        const newPost={
+            userId: user._id,
+            desc: desc.current.value
+        }
+
+        if(image){
+            const data = new FormData()
+            const filename= Date.now() + image.name
+            data.append("name",filename)
+            data.append("file",image)
+            newPost.image=filename
+            console.log(newPost)
+            try{
+                dispatch(uploadImage(data))
+            } catch(error){
+                console.log(error);
+            }
+        }
+    }
     return (
         <div className='PostShare'>
             <img src={profileImg} alt='profileImg'/>
             <div>
-                <input type='text' placeholder="What's on your mind?" />
+                <input ref={desc} required type='text' placeholder="What's on your mind?" />
                 <div className='postOption'>
                 <div className="option" style={{color:'var(--photo)'}}
                 onClick={()=>imageRef.current.click()}>
@@ -44,7 +69,7 @@ const PostShare = () => {
                     <UilSchedule/>
                     Schedule
                 </div>
-                <button className='button ps-button'>
+                <button className='button ps-button' onClick={handleSubmit}>
                     Share
                 </button>
                 <div style={{display:'none'}}>
@@ -55,7 +80,7 @@ const PostShare = () => {
                (
                 <div className='previewImage' style={{color:'var(--remove)'}}>
                 <UilTimes onClick={()=>setImage(null)}/>
-                <img src={image.image} alt='img'/>
+                <img src={URL.createObjectURL(image)} alt='img'/>
             </div>
                )
             }
